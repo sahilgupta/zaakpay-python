@@ -1,0 +1,8 @@
+Please find the below test card details.
+ 
+Type        CARD NO                           CVV     EXPIRY    Name    Month
+VISA         4012888888881881      123      2015       TEST     12
+VISA         4123450131001381      879      2015       TEST     12
+Master    5177194127672001      548      2015       TEST     12
+Master    5453010000064154      896      2015       TEST     12
+ 

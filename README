@@ -1,0 +1,28 @@
+The ZaakPay Python integration kit mainly consists of two files. checksum.py and zaakpay.wsgi
+
+Make sure that you replace the secret key in checksum.py with your own.
+
+zaakpay.wsgi has checksum.py as a requirement. So, you need to have checksum.py in the same 
+directory or anywhere else in the PYTHONPATH.
+
+Also, the ReturnURL configured on ZaakPay.com for the Merchant needs to be of the form "http://example.com/<some-path>/zaakpay/response/"
+Though this can be changed in the Apache configuration by editing the WSGIScriptAlias.
+
+Since this is a WSGI application, if you are using Apache as a server, you can use the mod_wsgi as an Apache module.
+You can download the mod_wsgi from http://code.google.com/p/modwsgi/downloads/list
+Take care to download the one for your Python Installation version.
+
+Configuring Apache & mod_WSGI:
+Add the following into httpd.conf
+=================================
+LoadModule wsgi_module /path/to/modules/directory/mod_wsgi.so
+
+<Directory "/absolute/path/to/zaakpay.wsgi-directory">
+AddHandler wsgi-script .wsgi
+Order deny,allow
+Allow from all
+</Directory>
+
+WSGIScriptAlias /zaakpay "<absolute/path/to/zaakpay.wsgi>/"
+
+=================================
